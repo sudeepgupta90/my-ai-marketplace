@@ -1,0 +1,21 @@
+# A `unit` whose skills live in this repo's root skills/ tree.
+#
+# Every bundle depends on this one. It is a same-marketplace dependency, so it
+# needs no allowlist entry and installs automatically with anything else.
+kind: unit
+name: plugin-doctor
+displayName: Plugin Doctor
+description: Diagnose plugin problems - unresolved dependencies, missing marketplaces, cache misses
+category: productivity
+tags: [diagnostics, maintenance]
+
+skills:
+  - plugin-doctor
+
+# Warns once per day when any installed plugin loaded with errors. Silent when
+# healthy. See scripts/doctor.mjs for the throttle and the reasoning.
+hooks:
+  SessionStart:
+    - hooks:
+        - type: command
+          command: node "${CLAUDE_PLUGIN_ROOT}/scripts/doctor.mjs" --hook

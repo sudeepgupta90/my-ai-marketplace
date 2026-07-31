@@ -1,0 +1,21 @@
+# Vendored. Apache-2.0 -- and note that this is a PER-SKILL licence.
+#
+# anthropics/skills has no repository-wide licence; each skill carries its own
+# LICENSE.txt, and they differ. mcp-builder is Apache-2.0, so it can be copied.
+# Its neighbours doc-coauthoring and the document skills are not -- see
+# doc-coauthoring.yaml and document-skills.yaml. `only` keeps that boundary
+# explicit rather than relying on the fetcher to guess.
+kind: unit
+name: mcp-builder
+displayName: MCP Builder
+description: Build and package MCP servers - scaffolding, transports, and tool design
+category: development
+tags: [mcp, servers, official]
+attribution: Anthropic
+
+upstream:
+  repo: anthropics/skills
+  license: Apache-2.0
+  vendor:
+    from: skills
+    only: [mcp-builder]

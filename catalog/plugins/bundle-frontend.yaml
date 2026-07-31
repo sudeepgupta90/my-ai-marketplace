@@ -1,0 +1,16 @@
+kind: bundle
+name: frontend
+displayName: Frontend
+description: Build distinctive, production-grade interfaces, with theme and design system support
+category: frontend
+tags: [frontend, design, ui]
+
+dependencies:
+  - plugin-doctor
+  # web-design-guidelines was on the wishlist but resolved only to low-signal
+  # third-party copies, so it was dropped. frontend-design covers the intent
+  # and is maintained by Anthropic. See docs/upstream-inventory.md.
+  - name: frontend-design
+    marketplace: claude-plugins-official
+  - name: ui-theme-designer
+    marketplace: claude-plugins-official

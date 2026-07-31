@@ -1,0 +1,23 @@
+{
+  "extraKnownMarketplaces": {
+    "my-ai-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "sudeepgupta90/my-ai-marketplace"
+      }
+    },
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "core-workflow@my-ai-marketplace": true,
+    "docs-knowledge@my-ai-marketplace": true,
+    "frontend@my-ai-marketplace": true,
+    "infra@my-ai-marketplace": true,
+    "meta@my-ai-marketplace": true
+  }
+}

@@ -1,0 +1,314 @@
+{
+  "name": "my-ai-marketplace",
+  "owner": {
+    "name": "Sudeep Gupta",
+    "url": "https://github.com/sudeepgupta90"
+  },
+  "description": "A self-owned, agent-portable catalog of AI skills",
+  "allowCrossMarketplaceDependenciesOn": [
+    "claude-plugins-official"
+  ],
+  "plugins": [
+    {
+      "name": "andrej-karpathy-skills",
+      "displayName": "Karpathy Guidelines",
+      "description": "Andrej Karpathy's guidelines for working with LLMs, extended with a fifth principle on signaling uncertainty, as an agent skill",
+      "source": "./",
+      "skills": [
+        "./skills/karpathy-extended"
+      ],
+      "category": "workflow",
+      "tags": [
+        "guidelines",
+        "methodology",
+        "llm"
+      ]
+    },
+    {
+      "name": "core-workflow",
+      "displayName": "Core Workflow",
+      "description": "The development methodology - spec to plan to execute, plus guidelines, handoff, and token-efficient output",
+      "source": "./",
+      "category": "workflow",
+      "tags": [
+        "workflow",
+        "methodology",
+        "essential"
+      ],
+      "dependencies": [
+        "superpowers",
+        "andrej-karpathy-skills",
+        "handoff",
+        "caveman",
+        "plugin-doctor",
+        {
+          "name": "code-simplifier",
+          "marketplace": "claude-plugins-official"
+        }
+      ]
+    },
+    {
+      "name": "docs-knowledge",
+      "displayName": "Docs & Knowledge",
+      "description": "Author documents with a co-author, and read or write Office and PDF files",
+      "source": "./",
+      "category": "productivity",
+      "tags": [
+        "documents",
+        "writing"
+      ],
+      "dependencies": [
+        "doc-coauthoring",
+        "document-skills",
+        "plugin-doctor"
+      ]
+    },
+    {
+      "name": "frontend",
+      "displayName": "Frontend",
+      "description": "Build distinctive, production-grade interfaces, with theme and design system support",
+      "source": "./",
+      "category": "frontend",
+      "tags": [
+        "frontend",
+        "design",
+        "ui"
+      ],
+      "dependencies": [
+        "plugin-doctor",
+        {
+          "name": "frontend-design",
+          "marketplace": "claude-plugins-official"
+        },
+        {
+          "name": "ui-theme-designer",
+          "marketplace": "claude-plugins-official"
+        }
+      ]
+    },
+    {
+      "name": "infra",
+      "displayName": "Infrastructure",
+      "description": "Terraform and database work - IaC grounded in HashiCorp best practices, plus official MCP servers",
+      "source": "./",
+      "category": "infrastructure",
+      "tags": [
+        "terraform",
+        "database",
+        "infrastructure"
+      ],
+      "dependencies": [
+        "terrashark",
+        "plugin-doctor",
+        {
+          "name": "terraform",
+          "marketplace": "claude-plugins-official"
+        },
+        {
+          "name": "planetscale",
+          "marketplace": "claude-plugins-official"
+        }
+      ]
+    },
+    {
+      "name": "meta",
+      "displayName": "Meta",
+      "description": "Build the setup itself - author skills, build plugins and MCP servers, review code and security",
+      "source": "./",
+      "category": "productivity",
+      "tags": [
+        "meta",
+        "authoring",
+        "plugins"
+      ],
+      "dependencies": [
+        "mcp-builder",
+        "plugin-doctor",
+        {
+          "name": "skill-creator",
+          "marketplace": "claude-plugins-official"
+        },
+        {
+          "name": "plugin-dev",
+          "marketplace": "claude-plugins-official"
+        },
+        {
+          "name": "security-guidance",
+          "marketplace": "claude-plugins-official"
+        },
+        {
+          "name": "pr-review-toolkit",
+          "marketplace": "claude-plugins-official"
+        }
+      ]
+    },
+    {
+      "name": "caveman",
+      "displayName": "Caveman",
+      "description": "Compresses agent output to terse, high-signal prose - fewer tokens, same content",
+      "source": "./",
+      "skills": [
+        "./skills/cavecrew",
+        "./skills/caveman",
+        "./skills/caveman-commit",
+        "./skills/caveman-compress",
+        "./skills/caveman-help",
+        "./skills/caveman-review",
+        "./skills/caveman-stats"
+      ],
+      "category": "productivity",
+      "tags": [
+        "output",
+        "tokens",
+        "style"
+      ]
+    },
+    {
+      "name": "doc-coauthoring",
+      "displayName": "Doc Co-authoring",
+      "description": "Collaborative document drafting and editing with an agent",
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/doc-coauthoring"
+      ],
+      "category": "productivity",
+      "tags": [
+        "documents",
+        "writing",
+        "official",
+        "claude-only"
+      ]
+    },
+    {
+      "name": "document-skills",
+      "displayName": "Document Skills",
+      "description": "Create and parse Word, Excel, PowerPoint, and PDF files",
+      "source": {
+        "source": "github",
+        "repo": "anthropics/skills"
+      },
+      "strict": false,
+      "skills": [
+        "./skills/docx",
+        "./skills/xlsx",
+        "./skills/pptx",
+        "./skills/pdf"
+      ],
+      "category": "productivity",
+      "tags": [
+        "documents",
+        "docx",
+        "xlsx",
+        "pptx",
+        "pdf",
+        "official",
+        "claude-only"
+      ]
+    },
+    {
+      "name": "handoff",
+      "displayName": "Handoff",
+      "description": "Compress a session into a handoff document so work continues in a fresh session or a different agent",
+      "source": "./",
+      "skills": [
+        "./skills/handoff"
+      ],
+      "category": "workflow",
+      "tags": [
+        "workflow",
+        "context",
+        "portability"
+      ]
+    },
+    {
+      "name": "mcp-builder",
+      "displayName": "MCP Builder",
+      "description": "Build and package MCP servers - scaffolding, transports, and tool design",
+      "source": "./",
+      "skills": [
+        "./skills/mcp-builder"
+      ],
+      "category": "development",
+      "tags": [
+        "mcp",
+        "servers",
+        "official"
+      ]
+    },
+    {
+      "name": "plugin-doctor",
+      "displayName": "Plugin Doctor",
+      "description": "Diagnose plugin problems - unresolved dependencies, missing marketplaces, cache misses",
+      "source": "./",
+      "skills": [
+        "./skills/plugin-doctor"
+      ],
+      "category": "productivity",
+      "tags": [
+        "diagnostics",
+        "maintenance"
+      ],
+      "hooks": {
+        "SessionStart": [
+          {
+            "hooks": [
+              {
+                "type": "command",
+                "command": "node \"${CLAUDE_PLUGIN_ROOT}/scripts/doctor.mjs\" --hook"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "superpowers",
+      "displayName": "Superpowers",
+      "description": "Agentic development methodology - brainstorming, planning, TDD, systematic debugging, code review",
+      "source": "./",
+      "skills": [
+        "./skills/brainstorming",
+        "./skills/dispatching-parallel-agents",
+        "./skills/executing-plans",
+        "./skills/finishing-a-development-branch",
+        "./skills/receiving-code-review",
+        "./skills/requesting-code-review",
+        "./skills/subagent-driven-development",
+        "./skills/systematic-debugging",
+        "./skills/test-driven-development",
+        "./skills/using-git-worktrees",
+        "./skills/using-superpowers",
+        "./skills/verification-before-completion",
+        "./skills/writing-plans",
+        "./skills/writing-skills"
+      ],
+      "category": "workflow",
+      "tags": [
+        "workflow",
+        "methodology",
+        "tdd",
+        "debugging"
+      ]
+    },
+    {
+      "name": "terrashark",
+      "displayName": "TerraShark",
+      "description": "Terraform and infrastructure-as-code review - drift, blast radius, and state safety",
+      "source": "./",
+      "skills": [
+        "./skills/terrashark"
+      ],
+      "category": "infrastructure",
+      "tags": [
+        "terraform",
+        "iac",
+        "infrastructure",
+        "review"
+      ]
+    }
+  ]
+}

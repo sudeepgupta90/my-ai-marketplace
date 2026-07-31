@@ -1,0 +1,11 @@
+node_modules/
+# (no .vendor/ any more -- upstream skills are vendored into skills/ and COMMITTED,
+#  which is what makes them visible to Codex and Gemini)
+.DS_Store
+
+# Per-user local overrides, never shared -- see docs/new-machine-setup.md.
+# .claude/settings.json itself IS committed: it's this repo's own dev config.
+.claude/settings.local.json
+
+# Original triage wishlist -- dev-only scratch input to docs/upstream-inventory.md, not part of the catalog.
+/Claude Skills.md

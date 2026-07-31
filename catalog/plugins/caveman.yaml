@@ -1,0 +1,17 @@
+# Vendored. MIT, so redistribution is granted outright.
+#
+# The upstream also keeps a copy under plugins/caveman/skills, which is a subset
+# of the top-level skills/ tree; `from: skills` takes the complete one.
+kind: unit
+name: caveman
+displayName: Caveman
+description: Compresses agent output to terse, high-signal prose - fewer tokens, same content
+category: productivity
+tags: [output, tokens, style]
+attribution: Julius Brussee (JuliusBrussee)
+
+upstream:
+  repo: JuliusBrussee/caveman
+  license: MIT
+  vendor:
+    from: skills

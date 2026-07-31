@@ -1,0 +1,20 @@
+# Tools for extending the setup itself -- authoring new skills and plugins,
+# and building the MCP servers they talk to.
+kind: bundle
+name: meta
+displayName: Meta
+description: Build the setup itself - author skills, build plugins and MCP servers, review code and security
+category: productivity
+tags: [meta, authoring, plugins]
+
+dependencies:
+  - mcp-builder
+  - plugin-doctor
+  - name: skill-creator
+    marketplace: claude-plugins-official
+  - name: plugin-dev
+    marketplace: claude-plugins-official
+  - name: security-guidance
+    marketplace: claude-plugins-official
+  - name: pr-review-toolkit
+    marketplace: claude-plugins-official

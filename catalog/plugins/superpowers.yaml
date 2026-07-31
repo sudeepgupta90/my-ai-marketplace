@@ -1,0 +1,20 @@
+# Vendored: the skill files are copied into skills/ and committed here.
+#
+# Pointing at obra/superpowers instead would be less work, but only Claude Code
+# can dereference a pointer -- Gemini and Codex would see nothing. Copying the
+# files is what makes this repo's promise ("one catalog, any agent") true.
+# MIT, so redistribution is granted outright; each vendored directory carries
+# the licence and the commit it came from.
+kind: unit
+name: superpowers
+displayName: Superpowers
+description: Agentic development methodology - brainstorming, planning, TDD, systematic debugging, code review
+category: workflow
+tags: [workflow, methodology, tdd, debugging]
+attribution: Jesse Vincent (obra)
+
+upstream:
+  repo: obra/superpowers
+  license: MIT
+  vendor:
+    from: skills

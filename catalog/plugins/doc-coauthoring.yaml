@@ -1,0 +1,30 @@
+# NOT vendored, and it cannot be: Claude Code only.
+#
+# anthropics/skills licenses each skill separately, and this one falls under the
+# repo's default terms with no LICENSE.txt of its own. Its sibling skills carry
+# Anthropic's services licence, which bars retaining copies outside the Services,
+# reproducing them, and distributing them to third parties. Absent an explicit
+# grant, copying this into a public repo is not something to assume.
+#
+# So it stays a pointer that Claude Code's installer resolves at install time --
+# the user fetches it themselves, which is exactly the authorised path.
+# strict:false makes this marketplace entry the whole plugin definition, so only
+# the one skill is loaded rather than the 12 that example-skills bundles.
+kind: unit
+name: doc-coauthoring
+displayName: Doc Co-authoring
+description: Collaborative document drafting and editing with an agent
+category: productivity
+tags: [documents, writing, official, claude-only]
+attribution: Anthropic
+
+upstream:
+  repo: anthropics/skills
+  license: LicenseRef-Anthropic-Services
+  notVendored: >-
+    Anthropic's licence forbids retaining copies outside the Services,
+    reproducing the materials, and distributing them to third parties.
+    Claude Code fetches it at install time instead. Verified 2026-07-28.
+  strict: false
+  skills:
+    - ./skills/doc-coauthoring

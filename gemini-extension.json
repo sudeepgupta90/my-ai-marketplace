@@ -1,0 +1,6 @@
+{
+  "name": "my-ai-marketplace",
+  "version": "0.1.0",
+  "description": "A self-owned, agent-portable catalog of AI skills",
+  "contextFileName": "AGENTS.md"
+}

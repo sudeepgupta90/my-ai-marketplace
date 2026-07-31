@@ -1,0 +1,11 @@
+# Authored here. Triage found no credible upstream: the only candidate was a
+# 0-star repo with a bare SKILL.md and no manifest. See docs/upstream-inventory.md.
+kind: unit
+name: handoff
+displayName: Handoff
+description: Compress a session into a handoff document so work continues in a fresh session or a different agent
+category: workflow
+tags: [workflow, context, portability]
+
+skills:
+  - handoff

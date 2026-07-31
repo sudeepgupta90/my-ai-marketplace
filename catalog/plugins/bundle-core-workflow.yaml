@@ -1,0 +1,20 @@
+# Bundles are dependency manifests: installing one resolves and installs every
+# dependency and enables them transitively at the same scope. This is how a
+# domain becomes a single install command.
+kind: bundle
+name: core-workflow
+displayName: Core Workflow
+description: The development methodology - spec to plan to execute, plus guidelines, handoff, and token-efficient output
+category: workflow
+tags: [workflow, methodology, essential]
+
+dependencies:
+  - superpowers              # clarify -> spec -> plan -> execute -> review
+  - andrej-karpathy-skills   # behavioural guidelines over that loop
+  - handoff                  # survive a session boundary
+  - caveman                  # cut output tokens
+  - plugin-doctor          # tell me when any of this breaks
+  # Registered by default on every Claude Code install, so this resolves with
+  # no extra setup. Depending beats forking a staler copy into this repo.
+  - name: code-simplifier
+    marketplace: claude-plugins-official

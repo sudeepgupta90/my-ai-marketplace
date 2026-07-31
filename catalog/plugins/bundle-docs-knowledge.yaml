@@ -1,0 +1,11 @@
+kind: bundle
+name: docs-knowledge
+displayName: Docs & Knowledge
+description: Author documents with a co-author, and read or write Office and PDF files
+category: productivity
+tags: [documents, writing]
+
+dependencies:
+  - doc-coauthoring
+  - document-skills
+  - plugin-doctor

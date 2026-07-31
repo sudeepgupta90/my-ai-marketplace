@@ -1,0 +1,41 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Catalog rules, manifest emission, and the decisions recorded in
+      # docs/upstream-inventory.md.
+      - name: Test
+        run: npm test
+
+      # The catalog is the source of truth, so a PR whose generated manifests do
+      # not match it must fail rather than ship a stale marketplace.json.
+      - name: Generated files are in sync
+        run: npm run check
+
+      # Vendored skills are committed, so they can be edited in place by
+      # accident -- a local fix to skills/brainstorming would be silently
+      # reverted by the next sync. Re-fetching and diffing catches that while
+      # the change is still in review.
+      - name: Vendored skills match their upstreams
+        run: npm run vendor:check
+
+      # Catches malformed plugin.json, SKILL.md frontmatter, and hooks that the
+      # catalog schema alone cannot see.
+      - name: Validate marketplace manifest
+        run: npx --yes @anthropic-ai/claude-code@latest plugin validate ./ --strict

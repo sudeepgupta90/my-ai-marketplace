@@ -1,0 +1,16 @@
+kind: bundle
+name: infra
+displayName: Infrastructure
+description: Terraform and database work - IaC grounded in HashiCorp best practices, plus official MCP servers
+category: infrastructure
+tags: [terraform, database, infrastructure]
+
+dependencies:
+  - terrashark
+  - plugin-doctor
+  # Both were wishlist items that turned out to be official already, which is
+  # why triage re-checks the official catalog before adding a third party.
+  - name: terraform
+    marketplace: claude-plugins-official
+  - name: planetscale
+    marketplace: claude-plugins-official

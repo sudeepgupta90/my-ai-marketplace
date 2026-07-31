@@ -1,0 +1,19 @@
+{
+  "name": "my-ai-marketplace",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A self-owned, agent-portable catalog of AI skills",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs --check",
+    "test": "node --test \"tests/**/*.test.mjs\"",
+    "vendor": "node scripts/vendor.mjs",
+    "vendor:check": "node scripts/vendor.mjs --check",
+    "sync:codex": "bash scripts/sync-codex.sh"
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.0"
+  },
+  "license": "MIT"
+}

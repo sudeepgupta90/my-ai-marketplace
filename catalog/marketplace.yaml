@@ -1,0 +1,52 @@
+# Marketplace root definition.
+#
+# This file plus catalog/plugins/*.yaml are the SINGLE SOURCE OF TRUTH.
+# .claude-plugin/marketplace.json and gemini-extension.json are GENERATED from them
+# by `npm run build`. Never hand-edit the generated files.
+
+name: my-ai-marketplace
+repo: sudeepgupta90/my-ai-marketplace # where users add this marketplace from
+owner:
+  name: Sudeep Gupta
+  url: https://github.com/sudeepgupta90
+description: A self-owned, agent-portable catalog of AI skills
+
+# ---------------------------------------------------------------------------
+# Cross-marketplace dependency allowlist
+# ---------------------------------------------------------------------------
+# Claude Code refuses to auto-install a dependency living in a different
+# marketplace unless it is named here. The rule closes a supply-chain hole:
+# without it, adding one marketplace could silently pull plugins from sources
+# you never reviewed, and plugins execute arbitrary code with your privileges.
+#
+# TRUST DOES NOT CHAIN. Only the ROOT marketplace's allowlist is consulted --
+# the root being the marketplace hosting the plugin named in the install
+# command. Installing anything@my-ai-marketplace consults THIS list for the entire
+# dependency tree, however deep. So this list is the complete audit surface for
+# foreign code entering the setup. Keep it minimal; justify every entry.
+#
+# `registeredByDefault` records whether users have the marketplace without
+# adding it. Dependencies on a marketplace that is NOT registered by default
+# resolve to nothing and silently disable the dependent plugin, so the
+# generator requires an `addCommand` for those and prints it in the quickstart.
+allowCrossMarketplaceDependenciesOn:
+  - name: claude-plugins-official
+    # VERIFIED 2026-07-28, and NOT what the docs imply. The official marketplace
+    # is browsable by default (it appears in the /plugin Discover tab), but it is
+    # NOT a *configured* marketplace, and dependency resolution only searches
+    # configured ones. Installing a bundle that depends on it fails with:
+    #   Dependency "frontend-design@claude-plugins-official" not found.
+    #   Is the "claude-plugins-official" marketplace added?
+    # So it must be registered explicitly, and the quickstart must say so.
+    registeredByDefault: false
+    addCommand: /plugin marketplace add anthropics/claude-plugins-official
+    why: >-
+      Anthropic's own catalog, auto-updating and maintained upstream. Preferred
+      source for anything it carries: depending on it beats forking a staler
+      copy into this repo. Covers 5 wishlist items outright.
+
+# Third-party upstreams are deliberately NOT listed here. They are re-listed as
+# units in this marketplace instead (a pointer in catalog/plugins/*.yaml, no
+# code copied), which keeps them same-marketplace dependencies. That avoids
+# both the allowlist and the "marketplace not registered" failure mode, and
+# means a user adds exactly one marketplace to get the whole setup.

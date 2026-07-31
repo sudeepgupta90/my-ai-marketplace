@@ -1,0 +1,58 @@
+name: vendor-sync
+
+# The auto-update mechanism, and the reason this repo can serve more than one
+# agent.
+#
+# Re-fetches every vendored upstream and opens a PR if anything moved. The diff
+# is the changelog: you review the actual skill text that changed, not a SHA
+# bump you have to go and look up. Pull requests rather than direct commits
+# because vendored files ship to every agent the moment they land, and an
+# upstream having a bad day should not reach anyone's session unreviewed.
+
+on:
+  schedule:
+    - cron: '17 6 * * *' # daily, off the hour to avoid the scheduling stampede
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # Re-vendor, then rebuild: a new or removed upstream skill changes the
+      # generated marketplace.json too, and the two must land in one commit.
+      - name: Re-vendor upstreams
+        run: |
+          npm run vendor
+          npm run build
+
+      - name: Verify the result before proposing it
+        run: npm test
+
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: vendor-sync
+          title: 'chore: sync vendored upstream skills'
+          commit-message: 'chore: sync vendored upstream skills'
+          labels: upstream
+          body: |
+            Automated re-vendor of upstream skills.
+
+            Every changed file below is upstream skill text that will reach
+            Claude Code, Gemini and Codex once merged. Read the diff.
+
+            Provenance (`.upstream.json`) records the exact commit each skill
+            came from. To hold one back, pin `upstream.sha` in its
+            `catalog/plugins/*.yaml` entry.

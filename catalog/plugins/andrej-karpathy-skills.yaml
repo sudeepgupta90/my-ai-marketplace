@@ -1,0 +1,18 @@
+# Vendored under MIT -- freely redistributable, no grant or attribution needed.
+#
+# This replaces the original forrestchang/andrej-karpathy-skills (unlicensed,
+# vendored only under a recorded GitHub ToS grant). sudeepgupta90's fork/merge
+# adds a fifth principle (Signal Uncertainty) and ships under a real MIT
+# licence, which resolves the "upstream publishes no licence" problem outright.
+kind: unit
+name: andrej-karpathy-skills
+displayName: Karpathy Guidelines
+description: Andrej Karpathy's guidelines for working with LLMs, extended with a fifth principle on signaling uncertainty, as an agent skill
+category: workflow
+tags: [guidelines, methodology, llm]
+
+upstream:
+  repo: sudeepgupta90/extended-andrej-karpathy-skill
+  license: MIT
+  vendor:
+    from: skills

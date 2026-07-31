@@ -1,0 +1,31 @@
+{
+  "enabledPlugins": {
+    "code-simplifier@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": true,
+    "plugin-dev@claude-plugins-official": true,
+    "security-guidance@claude-plugins-official": true,
+    "pr-review-toolkit@claude-plugins-official": true,
+    "superpowers@my-ai-marketplace": true,
+    "andrej-karpathy-skills@my-ai-marketplace": true,
+    "handoff@my-ai-marketplace": true,
+    "caveman@my-ai-marketplace": true,
+    "plugin-doctor@my-ai-marketplace": true,
+    "core-workflow@my-ai-marketplace": true,
+    "mcp-builder@my-ai-marketplace": true,
+    "meta@my-ai-marketplace": true
+  },
+  "extraKnownMarketplaces": {
+    "my-ai-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "sudeepgupta90/my-ai-marketplace"
+      }
+    },
+    "claude-plugins-official": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-plugins-official"
+      }
+    }
+  }
+}

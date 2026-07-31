@@ -1,0 +1,28 @@
+# Cherry-picked from the same repo as doc-coauthoring, kept separate because
+# document processing is a different concern from authoring and MCP work, and
+# splitting them lets a bundle take one without the other's context cost.
+kind: unit
+name: document-skills
+displayName: Document Skills
+description: Create and parse Word, Excel, PowerPoint, and PDF files
+category: productivity
+tags: [documents, docx, xlsx, pptx, pdf, official, claude-only]
+attribution: Anthropic
+
+upstream:
+  repo: anthropics/skills
+  # Each of these four carries its own LICENSE.txt reserving all rights and
+  # barring copies outside Anthropic's Services. Read the text before ever
+  # reconsidering this: it forbids reproduction and distribution outright, so
+  # no attribution or justification makes vendoring them legitimate.
+  license: LicenseRef-Anthropic-Services
+  notVendored: >-
+    Anthropic's per-skill licence forbids retaining copies outside the Services,
+    reproducing them, and distributing them to third parties. Claude Code fetches
+    them at install time instead. Verified 2026-07-28.
+  strict: false
+  skills:
+    - ./skills/docx
+    - ./skills/xlsx
+    - ./skills/pptx
+    - ./skills/pdf
