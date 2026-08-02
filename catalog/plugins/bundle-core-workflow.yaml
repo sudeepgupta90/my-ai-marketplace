@@ -4,13 +4,14 @@
 kind: bundle
 name: core-workflow
 displayName: Core Workflow
-description: The development methodology - spec to plan to execute, plus guidelines, handoff, and token-efficient output
+description: The development methodology - question to spec to plan to execute, plus guidelines, handoff, and token-efficient output
 category: workflow
 tags: [workflow, methodology, essential]
 
 dependencies:
   - superpowers              # clarify -> spec -> plan -> execute -> review
   - andrej-karpathy-skills   # behavioural guidelines over that loop
+  # - foundational-thinking    # sharpen the question before the loop starts
   - handoff                  # survive a session boundary
   - caveman                  # cut output tokens
   - plugin-doctor          # tell me when any of this breaks

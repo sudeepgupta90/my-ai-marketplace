@@ -1,0 +1,22 @@
+# Vendored under MIT -- freely redistributable, no grant or attribution needed.
+#
+# Own repo, so the licence question is settled at the source rather than
+# inherited. Standard skills/<name>/SKILL.md tree, so `from: skills` takes both
+# skills without an `only` filter.
+#
+# The two skills are deliberately not merged into one: they answer different
+# questions (dissolve an ill-formed belief vs. decide between named options) and
+# the upstream tunes each description to route between them. Vendoring both
+# keeps that routing intact.
+kind: unit
+name: foundational-thinking
+displayName: Foundational Thinking
+description: Socratic inquiry and Scholastic disputation as agent skills - define vague quality words before acting, and defend a choice against its strongest objections
+category: workflow
+tags: [thinking, reasoning, methodology, decisions]
+
+upstream:
+  repo: sudeepgupta90/foundational-thinking
+  license: MIT
+  vendor:
+    from: skills

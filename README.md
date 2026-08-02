@@ -38,7 +38,7 @@ Copy [`templates/settings.json`](templates/settings.json) to `.claude/settings.j
 
 | Bundle | Install | What it gives you |
 | --- | --- | --- |
-| **Core Workflow** | `/plugin install core-workflow@my-ai-marketplace` | The development methodology - spec to plan to execute, plus guidelines, handoff, and token-efficient output<br>Pulls in: superpowers, andrej-karpathy-skills, handoff, caveman, plugin-doctor, code-simplifier |
+| **Core Workflow** | `/plugin install core-workflow@my-ai-marketplace` | The development methodology - question to spec to plan to execute, plus guidelines, handoff, and token-efficient output<br>Pulls in: superpowers, andrej-karpathy-skills, foundational-thinking, handoff, caveman, plugin-doctor, code-simplifier |
 | **Docs & Knowledge** | `/plugin install docs-knowledge@my-ai-marketplace` | Author documents with a co-author, and read or write Office and PDF files<br>Pulls in: doc-coauthoring, document-skills, plugin-doctor |
 | **Frontend** | `/plugin install frontend@my-ai-marketplace` | Build distinctive, production-grade interfaces, with theme and design system support<br>Pulls in: plugin-doctor, frontend-design, ui-theme-designer |
 | **Infrastructure** | `/plugin install infra@my-ai-marketplace` | Terraform and database work - IaC grounded in HashiCorp best practices, plus official MCP servers<br>Pulls in: terrashark, plugin-doctor, terraform, planetscale |
@@ -52,6 +52,7 @@ Copy [`templates/settings.json`](templates/settings.json) to `.claude/settings.j
 | `caveman` | [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) | MIT | any agent | daily re-vendor PR |
 | `doc-coauthoring` | [anthropics/skills](https://github.com/anthropics/skills) | LicenseRef-Anthropic-Services | Claude Code only | every upstream commit |
 | `document-skills` | [anthropics/skills](https://github.com/anthropics/skills) | LicenseRef-Anthropic-Services | Claude Code only | every upstream commit |
+| `foundational-thinking` | [sudeepgupta90/foundational-thinking](https://github.com/sudeepgupta90/foundational-thinking) | MIT | any agent | daily re-vendor PR |
 | `handoff` | this repo | MIT | any agent | every commit here |
 | `mcp-builder` | [anthropics/skills](https://github.com/anthropics/skills) | Apache-2.0 | any agent | daily re-vendor PR |
 | `plugin-doctor` | this repo | MIT | any agent | every commit here |

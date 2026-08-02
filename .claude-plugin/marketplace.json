@@ -27,7 +27,7 @@
     {
       "name": "core-workflow",
       "displayName": "Core Workflow",
-      "description": "The development methodology - spec to plan to execute, plus guidelines, handoff, and token-efficient output",
+      "description": "The development methodology - question to spec to plan to execute, plus guidelines, handoff, and token-efficient output",
       "source": "./",
       "category": "workflow",
       "tags": [
@@ -38,6 +38,7 @@
       "dependencies": [
         "superpowers",
         "andrej-karpathy-skills",
+        "foundational-thinking",
         "handoff",
         "caveman",
         "plugin-doctor",
@@ -207,6 +208,23 @@
         "pdf",
         "official",
         "claude-only"
+      ]
+    },
+    {
+      "name": "foundational-thinking",
+      "displayName": "Foundational Thinking",
+      "description": "Socratic inquiry and Scholastic disputation as agent skills - define vague quality words before acting, and defend a choice against its strongest objections",
+      "source": "./",
+      "skills": [
+        "./skills/scholastic-disputation",
+        "./skills/socratic-inquiry"
+      ],
+      "category": "workflow",
+      "tags": [
+        "thinking",
+        "reasoning",
+        "methodology",
+        "decisions"
       ]
     },
     {
