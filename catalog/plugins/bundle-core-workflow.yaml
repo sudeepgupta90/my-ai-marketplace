@@ -4,7 +4,7 @@
 kind: bundle
 name: core-workflow
 displayName: Core Workflow
-description: The development methodology - question to spec to plan to execute, plus guidelines, handoff, and token-efficient output
+description: The development methodology - spec to plan to execute, plus guidelines, handoff, and token-efficient output
 category: workflow
 tags: [workflow, methodology, essential]
 
