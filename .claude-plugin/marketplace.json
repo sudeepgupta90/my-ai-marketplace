@@ -152,9 +152,22 @@
         "./skills/caveman",
         "./skills/caveman-commit",
         "./skills/caveman-compress",
+        "./skills/caveman-discover",
+        "./skills/caveman-evidence-review",
+        "./skills/caveman-explore",
         "./skills/caveman-help",
+        "./skills/caveman-learn",
+        "./skills/caveman-manage",
+        "./skills/caveman-optimize",
         "./skills/caveman-review",
-        "./skills/caveman-stats"
+        "./skills/caveman-setup",
+        "./skills/caveman-stats",
+        "./skills/investigate-first",
+        "./skills/lean-build",
+        "./skills/migration",
+        "./skills/safe-refactor",
+        "./skills/surgical-patch",
+        "./skills/verify-and-stop"
       ],
       "category": "productivity",
       "tags": [
