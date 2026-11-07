@@ -41,6 +41,23 @@ jobs:
       - name: Verify the result before proposing it
         run: npm test
 
+      # An upstream commit that touches none of the directories we vendor still
+      # moves the repo-wide SHA recorded in every skill's .upstream.json. That is
+      # provenance noise, not a change anyone can review, so discard it. Any
+      # other difference -- skill text, a new or removed skill, the regenerated
+      # manifest -- is substantive and keeps the whole diff, SHA bumps included.
+      - name: Ignore provenance-only changes
+        run: |
+          substantive=$(git status --porcelain --untracked-files=all | cut -c4- | grep -v '/\.upstream\.json$' || true)
+          if [ -z "$substantive" ]; then
+            echo "Only .upstream.json provenance changed; nothing to propose."
+            git checkout -- .
+            git clean -fdq skills
+          else
+            echo "Substantive changes:"
+            echo "$substantive"
+          fi
+
       - uses: peter-evans/create-pull-request@v7
         with:
           branch: vendor-sync
