@@ -2,8 +2,8 @@
   "entry": "mcp-builder",
   "repo": "anthropics/skills",
   "path": "skills/mcp-builder",
-  "sha": "ca45fc496a3436251f191354091d557da31c15b5",
+  "sha": "2c5958ecac7cee2b583967a2c4981d0f4a75c579",
   "license": "Apache-2.0",
   "attribution": "Anthropic",
-  "fetchedAt": "2026-11-06"
+  "fetchedAt": "2026-11-07"
 }
