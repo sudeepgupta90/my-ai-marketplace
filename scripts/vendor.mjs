@@ -19,7 +19,7 @@ import { cpSync, existsSync, mkdtempSync, mkdirSync, readdirSync, rmSync, writeF
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
-import { loadCatalog, validateCatalog, vendoredSkills, PROVENANCE } from './lib/catalog.mjs';
+import { loadCatalog, validateCatalog, vendoredSkills, vendoredProvenance, PROVENANCE } from './lib/catalog.mjs';
 
 const root = process.cwd();
 const check = process.argv.includes('--check');
@@ -118,7 +118,19 @@ function copySkill(src, dest, include) {
 function vendorEntry(entry, repoRoot, market) {
   const { repo, vendor, license } = entry.upstream;
   const from = vendor.from ?? 'skills';
-  const { dir, sha, license: repoLicenseText } = fetchUpstream(repo, from, entry.upstream.sha);
+
+  // What we vendored last time, keyed by skill directory.
+  const recorded = vendoredProvenance(repoRoot);
+  const recordedFor = (name) => (recorded.get(name)?.entry === entry.name ? recorded.get(name) : undefined);
+
+  // --check asks "were the vendored files edited by hand?", not "has upstream
+  // moved?". Re-fetching live HEAD would fail every time an upstream pushed
+  // between the sync and the check, so verify against the commit on record.
+  // An explicit catalog pin still wins.
+  const recordedSha = check
+    ? vendoredSkills(repoRoot, entry.name).map((n) => recordedFor(n)?.sha).find(Boolean)
+    : undefined;
+  const { dir, sha, license: repoLicenseText } = fetchUpstream(repo, from, entry.upstream.sha ?? recordedSha);
 
   try {
     const srcRoot = from === '.' ? dir : join(dir, from);
@@ -180,7 +192,12 @@ function vendorEntry(entry, repoRoot, market) {
             license,
             ...(entry.upstream.licenseGrant ? { licenseGrant: entry.upstream.licenseGrant.trim() } : {}),
             attribution: entry.attribution ?? repo,
-            fetchedAt: new Date().toISOString().slice(0, 10),
+            // Only restamp when the content actually moved; otherwise every
+            // run dirties every file and the daily sync opens a no-op PR.
+            fetchedAt:
+              recordedFor(name)?.sha === sha && recordedFor(name)?.fetchedAt
+                ? recordedFor(name).fetchedAt
+                : new Date().toISOString().slice(0, 10),
           },
           null,
           2,
